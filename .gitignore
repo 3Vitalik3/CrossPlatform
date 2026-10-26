@@ -1,0 +1,15 @@
+# Local dependencies and build output
+**/.m2repo/
+**/target/
+
+# Local databases and configuration
+**/data/
+*.mv.db
+*.trace.db
+.env
+**/.env
+
+# Editor files
+**/.idea/
+**/.vscode/
+*.iml

@@ -1,0 +1,12 @@
+.git
+.gitignore
+.idea
+.vscode
+.m2repo
+.env
+.env.*
+data
+target
+*.iml
+*.log
+README.md

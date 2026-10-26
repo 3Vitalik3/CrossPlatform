@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ViceMods — фанатский каталог концептов модификаций для GTA VI">
+    <title>ViceMods — моды для GTA VI</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css">
+    <script th:src="@{/js/app.js}" src="/js/app.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+    <a class="brand" href="/" aria-label="ViceMods — главная">
+        <span class="brand-mark">V</span><span>VICE<em>MODS</em></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Меню</button>
+    <nav class="main-nav" id="main-nav" aria-label="Основная навигация">
+        <a class="active" href="#top">Главная</a>
+        <a href="#mods">Каталог</a>
+        <a href="#categories">Категории</a>
+        <a href="#community">Сообщество</a>
+        <a href="#about">О проекте</a>
+    </nav>
+    <a class="button button-primary header-action" href="/auth" th:if="${currentUsername == null}">Войти <span>↗</span></a>
+    <div class="user-menu" th:if="${currentUsername != null}">
+        <span th:text="'@' + ${currentUsername}">@ViceRider</span>
+        <form th:action="@{/logout}" method="post"><button type="submit">Выйти</button></form>
+    </div>
+</header>
+
+<main id="top">
+    <div class="flash success" th:if="${param.loginSuccess}">Вы вошли в ViceMods. Добро пожаловать!</div>
+    <div class="flash" th:if="${param.logout}">Сессия завершена.</div>
+
+    <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy-block">
+            <p class="eyebrow"><span></span> FAN-MADE MOD HUB · VICE CITY</p>
+            <h1 id="hero-title">ТВОЯ ИГРА.<br>ТВОИ <em>ПРАВИЛА.</em></h1>
+            <p class="hero-copy">Исследуй фанатские концепты, кастомные тачки, визуальные улучшения и идеи для мира GTA VI. Собирай свою версию Vice City.</p>
+            <div class="hero-actions">
+                <a class="button button-primary" href="#mods">Исследовать моды <span>↗</span></a>
+                <a class="button button-secondary" href="/auth?mode=register" th:if="${currentUsername == null}">Присоединиться</a>
+            </div>
+            <dl class="stats">
+                <div><dt>120+</dt><dd>идей модов</dd></div>
+                <div><dt>18K</dt><dd>фанатов</dd></div>
+                <div><dt>100%</dt><dd>вайб Vice City</dd></div>
+            </dl>
+        </div>
+        <div class="hero-visual">
+            <div class="image-frame">
+                <img src="/images/vice-city-car.svg" th:src="@{/images/vice-city-car.svg}" alt="Спортивный автомобиль на фоне неонового заката и пальм">
+                <span class="image-caption">VICE CITY / AFTER DARK</span>
+            </div>
+            <div class="featured"><strong>FEATURED CONCEPT</strong><span>Neon street pack · v.01</span></div>
+        </div>
+    </section>
+
+    <section class="section" id="mods" aria-labelledby="mods-title">
+        <div class="section-heading">
+            <div><p class="eyebrow"><span></span> COMMUNITY PICKS</p><h2 id="mods-title">МОДЫ НА РАДАРЕ</h2></div>
+            <p>Концепты сообщества для будущей GTA VI</p>
+        </div>
+        <div class="filters" id="categories" aria-label="Фильтр категорий">
+            <button class="filter active" type="button" data-filter="all">Все моды</button>
+            <button class="filter" type="button" data-filter="cars">Транспорт</button>
+            <button class="filter" type="button" data-filter="visual">Графика</button>
+            <button class="filter" type="button" data-filter="gameplay">Геймплей</button>
+            <button class="filter" type="button" data-filter="maps">Окружение</button>
+        </div>
+        <div class="mod-grid">
+            <article class="mod-card" data-category="cars">
+                <div class="mod-art mod-art-car"><span class="tag">ТРАНСПОРТ</span><span aria-hidden="true">🏎️</span></div>
+                <div class="mod-content"><h3>Vice Street Legends</h3><p>Пак уличных суперкаров с кастомными обвесами и неоновыми деталями.</p><div class="mod-meta"><span>★ <b>4.9</b> · 2.4k</span><a href="/auth">Подробнее ↗</a></div></div>
+            </article>
+            <article class="mod-card" data-category="visual">
+                <div class="mod-art mod-art-city"><span class="tag">ГРАФИКА</span><span aria-hidden="true">🌇</span></div>
+                <div class="mod-content"><h3>Golden Hour ReShade</h3><p>Тёплые закаты, контрастные ночные улицы и кинематографичный цвет.</p><div class="mod-meta"><span>★ <b>4.8</b> · 1.8k</span><a href="/auth">Подробнее ↗</a></div></div>
+            </article>
+            <article class="mod-card" data-category="gameplay">
+                <div class="mod-art mod-art-bike"><span class="tag">ГЕЙМПЛЕЙ</span><span aria-hidden="true">🏍️</span></div>
+                <div class="mod-content"><h3>Midnight Rider</h3><p>Ночные заезды, испытания на время и репутация уличного гонщика.</p><div class="mod-meta"><span>★ <b>4.7</b> · 960</span><a href="/auth">Подробнее ↗</a></div></div>
+            </article>
+            <article class="mod-card" data-category="maps">
+                <div class="mod-art mod-art-map"><span class="tag">ОКРУЖЕНИЕ</span><span aria-hidden="true">🌴</span></div>
+                <div class="mod-content"><h3>Keys Expanded</h3><p>Новые островные маршруты, пляжные районы и скрытые точки интереса.</p><div class="mod-meta"><span>★ <b>4.6</b> · 740</span><a href="/auth">Подробнее ↗</a></div></div>
+            </article>
+        </div>
+    </section>
+
+    <section class="cta" id="community">
+        <div><p class="eyebrow"><span></span> BUILD THE NEXT WAVE</p><h2>ЕСТЬ ИДЕЯ ДЛЯ VICE CITY?</h2><p>Создай аккаунт и присоединяйся к сообществу авторов.</p></div>
+        <a class="button button-primary" href="/auth?mode=register">Создать аккаунт <span>↗</span></a>
+    </section>
+
+    <section class="about" id="about">
+        <span>FAN PROJECT / 2026</span>
+        <p>ViceMods — учебный каталог идей и модификаций. GTA VI и связанные товарные знаки принадлежат их правообладателям. Проект не является официальным сайтом Rockstar Games.</p>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <a class="brand" href="/"><span class="brand-mark">V</span><span>VICE<em>MODS</em></span></a>
+    <div class="footer-links">
+        <a href="#mods">Каталог</a><a href="#categories">Категории</a><a href="#community">Сообщество</a>
+        <a href="#about">О проекте</a><a href="/auth">Аккаунт</a><a href="#about">Дисклеймер</a>
+    </div>
+    <span>© 2026 VICEMODS · FAN CONCEPT</span>
+</footer>
+</body>
+</html>

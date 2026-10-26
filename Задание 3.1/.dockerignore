@@ -1,0 +1,10 @@
+.git
+.gitignore
+.idea
+.vscode
+.m2repo
+data
+target
+*.iml
+*.log
+README.md

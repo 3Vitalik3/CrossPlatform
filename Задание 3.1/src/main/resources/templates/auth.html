@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Вход и регистрация в сообществе ViceMods">
+    <title>Аккаунт — ViceMods</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css">
+    <script th:src="@{/js/auth.js}" src="/js/auth.js" defer></script>
+</head>
+<body class="auth-page" th:attr="data-mode=${activeMode}">
+<header class="site-header compact-header">
+    <a class="brand" href="/" aria-label="ViceMods — главная"><span class="brand-mark">V</span><span>VICE<em>MODS</em></span></a>
+    <a class="back-link" href="/">← Вернуться на главную</a>
+</header>
+
+<main class="auth-main">
+    <section class="auth-shell" aria-labelledby="auth-title">
+        <div class="auth-aside">
+            <p class="eyebrow"><span></span> YOUR VICE. YOUR RULES.</p>
+            <h1>ВСТУПАЙ<br>В <em>ИГРУ.</em></h1>
+            <p>Сохраняй любимые концепты и будь рядом с сообществом, которое переосмысливает Vice City.</p>
+            <div class="auth-art" aria-hidden="true"><span>V</span><small>VICE CITY<br>COMMUNITY</small></div>
+        </div>
+        <div class="auth-card">
+            <p class="eyebrow"><span></span> WELCOME TO VICEMODS</p>
+            <h2 id="auth-title">ДОБРО ПОЖАЛОВАТЬ.</h2>
+            <p class="auth-intro">Войди в аккаунт или создай новый — это займёт меньше минуты.</p>
+
+            <div class="auth-tabs" role="tablist" aria-label="Выбор формы">
+                <button type="button" role="tab" data-auth-tab="login">Войти</button>
+                <button type="button" role="tab" data-auth-tab="register">Регистрация</button>
+            </div>
+
+            <div class="notice success" th:if="${param.registered}">Аккаунт создан. Теперь можно войти.</div>
+            <div class="notice error" th:if="${param.error}">Не удалось войти. Проверьте email и пароль.</div>
+
+            <form class="auth-form" id="login-form" th:action="@{/login}" method="post" novalidate>
+                <label for="login-email">EMAIL</label>
+                <input id="login-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+                <label for="login-password">ПАРОЛЬ</label>
+                <input id="login-password" name="password" type="password" placeholder="Минимум 8 символов" autocomplete="current-password" required>
+                <button class="button button-primary form-button" type="submit">Войти в аккаунт <span>↗</span></button>
+            </form>
+
+            <form class="auth-form" id="register-form" th:action="@{/register}" th:object="${registrationForm}" method="post" novalidate>
+                <div class="notice error" th:if="${registrationError}" th:text="${registrationError}"></div>
+                <label for="username">НИКНЕЙМ</label>
+                <input id="username" th:field="*{username}" type="text" placeholder="ViceRider" autocomplete="nickname" minlength="3" maxlength="40" required>
+                <small class="field-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></small>
+                <label for="register-email">EMAIL</label>
+                <input id="register-email" th:field="*{email}" type="email" placeholder="you@example.com" autocomplete="email" required>
+                <small class="field-error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+                <label for="register-password">ПАРОЛЬ</label>
+                <input id="register-password" th:field="*{password}" type="password" placeholder="Aa, цифра и спецсимвол" autocomplete="new-password" minlength="8" maxlength="72" required>
+                <small class="field-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>
+                <button class="button button-primary form-button" type="submit">Создать аккаунт <span>↗</span></button>
+            </form>
+            <p class="form-note">Продолжая, вы соглашаетесь с правилами фанатского сообщества.</p>
+        </div>
+    </section>
+</main>
+</body>
+</html>

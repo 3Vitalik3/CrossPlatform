@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 660" role="img" aria-labelledby="title desc">
+  <title id="title">Неоновый автомобиль в Vice City</title>
+  <desc id="desc">Стилизованный спортивный автомобиль на фоне оранжевого солнца, моря и пальм</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffba7a"/><stop offset=".42" stop-color="#ee4f91"/><stop offset="1" stop-color="#24143e"/></linearGradient>
+    <linearGradient id="car" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd0c0"/><stop offset=".45" stop-color="#ff4b91"/><stop offset="1" stop-color="#7130a2"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="11" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0v48" fill="none" stroke="#fff" stroke-opacity=".08"/></pattern>
+  </defs>
+  <rect width="760" height="660" fill="url(#sky)"/>
+  <rect width="760" height="660" fill="url(#grid)"/>
+  <circle cx="545" cy="188" r="125" fill="#ffdc88" filter="url(#glow)"/>
+  <path d="M0 390c130-60 250 38 395-20s245-5 365-42v332H0z" fill="#201331" fill-opacity=".74"/>
+  <g fill="#171025">
+    <path d="M620 85h17v300h-17z" transform="rotate(8 628 235)"/>
+    <path d="M625 112c-70-61-124-12-143 18 54-25 104-6 143 16zM632 122c71-57 122-4 137 28-50-28-100-13-139 10zM625 103c-32-78 29-109 65-111-39 37-43 88-28 127z"/>
+  </g>
+  <g transform="translate(60 345)">
+    <ellipse cx="331" cy="228" rx="300" ry="46" fill="#080611" fill-opacity=".7"/>
+    <path d="M25 148l80-24 75-83 160-19 118 33 85 79 66 26-14 91H35L5 204z" fill="url(#car)" stroke="#ffc2dd" stroke-width="4"/>
+    <path d="M194 48l139-15 94 31 49 57H145z" fill="#171b30" stroke="#ff91bd" stroke-width="5"/>
+    <path d="M298 36v84M143 125h340" stroke="#8e6a9f" stroke-width="4"/>
+    <path d="M20 170h109M490 163h99" stroke="#ffe3a1" stroke-width="14" stroke-linecap="round" filter="url(#glow)"/>
+    <g fill="#090912" stroke="#50475f" stroke-width="14"><circle cx="142" cy="231" r="55"/><circle cx="480" cy="231" r="55"/></g>
+    <g fill="#ff4b91"><circle cx="142" cy="231" r="17"/><circle cx="480" cy="231" r="17"/></g>
+  </g>
+  <text x="48" y="70" fill="#fff" fill-opacity=".7" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="8">VICE / 06</text>
+</svg>
