@@ -17,49 +17,10 @@
 Юнит тесты должны покрывать логику( проверка сложность пароля, уникальности логина, корректность почты и т.д) и работу с базой данных.
 Для выполнения данного задания нужно изучить, как можно взаимодействовать с бд во время юнит тестов(посмотрите DataJpaTest и  мокирование)
 
-# Технологии
-- - Java 21
-- Spring Boot 3.5, Spring MVC, Thymeleaf
-- Spring Security + BCrypt
-- Spring Data JPA
-- файловая база H2
-- HTML, CSS и JavaScript для фильтра и мобильного меню
-
 -Регистрация проверяет никнейм, формат email и сложность пароля. Пароль должен содержать от 8 до 72 символов, строчную и заглавную буквы, цифру и специальный символ. Повторяющиеся email и никнеймы не допускаются, в базе сохраняется только BCrypt-хеш.
-
-Тесты разделены по назначению:
-
-- `RegistrationFormValidationTest` — правила email, логина и сложности пароля;
-- `UserServiceTest` — unit-тесты регистрации с Mockito;
-- `DatabaseUserDetailsServiceTest` — unit-тесты загрузки пользователя для авторизации с Mockito;
-- `AppUserRepositoryTest` — `@DataJpaTest` с изолированной H2 и проверкой ограничений БД;
-- `ViceModsApplicationTests` — сквозная проверка MVC, Security и сохранения BCrypt-хеша.
 
 > ViceMods — учебный фанатский проект. Он не связан с Rockstar Games или Take-Two Interactive.
 
-# Создание Dockerfile №3 (CrossPlatformingJavaTask3)
-Напишите dockerfile, который создаст контейнер с любым java проектом. Вы можете использовать проект любой сложности для данного задания. 
-
-## Сборка и запуск Docker-контейнера
-
-Проект собирается в два этапа: Maven создаёт исполняемый JAR, после чего приложение переносится в компактный образ Java Runtime. Контейнер запускается от непривилегированного пользователя `spring`.
-
-```powershell
-docker build -t vicemods:1.0 .
-docker run --name vicemods -p 8080:8080 -v vicemods-data:/app/data vicemods:1.0
-```
-
-После запуска сайт доступен по адресу [http://localhost:8080](http://localhost:8080). Именованный том `vicemods-data` сохраняет файловую базу H2 между перезапусками контейнера.
-
-Остановка и удаление контейнера:
-
-```powershell
-docker stop vicemods
-docker rm vicemods
-```
-
-# Создание Dockerfile №4 (CrossPlatformingJavaTask4)
-Создайте docker-compose файл, который будет связывать Java проект, который содержит функции для crud операций над таблицей в бд и базу данных. Java проект должен иметь возможность связываться с бд и работать с ней.
 
 
  
