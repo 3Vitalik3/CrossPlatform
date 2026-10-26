@@ -19,21 +19,11 @@
 
 # Технологии
 - - Java 21
-- Spring Boot 3.5, Spring MVC, Thymeleaf
-- Spring Security + BCrypt
 - Spring Data JPA
 - файловая база H2
 - HTML, CSS и JavaScript для фильтра и мобильного меню
 
 -Регистрация проверяет никнейм, формат email и сложность пароля. Пароль должен содержать от 8 до 72 символов, строчную и заглавную буквы, цифру и специальный символ. Повторяющиеся email и никнеймы не допускаются, в базе сохраняется только BCrypt-хеш.
-
-Тесты разделены по назначению:
-
-- `RegistrationFormValidationTest` — правила email, логина и сложности пароля;
-- `UserServiceTest` — unit-тесты регистрации с Mockito;
-- `DatabaseUserDetailsServiceTest` — unit-тесты загрузки пользователя для авторизации с Mockito;
-- `AppUserRepositoryTest` — `@DataJpaTest` с изолированной H2 и проверкой ограничений БД;
-- `ViceModsApplicationTests` — сквозная проверка MVC, Security и сохранения BCrypt-хеша.
 
 > ViceMods — учебный фанатский проект. Он не связан с Rockstar Games или Take-Two Interactive.
 
@@ -41,8 +31,6 @@
 Напишите dockerfile, который создаст контейнер с любым java проектом. Вы можете использовать проект любой сложности для данного задания. 
 
 ## Сборка и запуск Docker-контейнера
-
-Проект собирается в два этапа: Maven создаёт исполняемый JAR, после чего приложение переносится в компактный образ Java Runtime. Контейнер запускается от непривилегированного пользователя `spring`.
 
 ```powershell
 docker build -t vicemods:1.0 .
